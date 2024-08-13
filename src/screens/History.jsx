@@ -15,6 +15,8 @@ export default function History() {
                 console.error(error)
             });
     }, [])
+    
+
 
     return (
         <div className="page-container">
@@ -34,6 +36,8 @@ export default function History() {
                                 <div key={item.id} className='history-item'>
                                     <div>{item.text}</div>
                                     <div>{item.date_unix}</div>
+                                    <button>Download Audio</button>
+                                    <button>Play Audio</button>
                                 </div>
                             )
                         })
