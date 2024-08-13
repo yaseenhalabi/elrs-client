@@ -21,6 +21,7 @@ export default function TextToSpeech() {
     }
     const getAudio = () => {
         console.log("getting audio")
+        setAudioFile(null)
         axios.post('http://localhost:3000/text-to-speech', { text }, {  
             withCredentials: true,
             responseType: 'blob',  // Expect a blob response (binary data)
@@ -55,9 +56,9 @@ export default function TextToSpeech() {
                     cols='50'
                     placeholder='Type anything and turn it into natural-sounding speech' 
                 />
-                <button onClick={() => getAudio(audioFile)}>Generate Speech</button>
+                <button onClick={() => getAudio()}>Generate Speech</button>
                 <button onClick={() => playAudio(audioFile)}>Play Speech</button>
-                <button onClick={() => downloadAudio}>Download Speech</button>
+                <button onClick={() => downloadAudio(audioFile)}>Download Speech</button>
             </div>
         </div>
     )
