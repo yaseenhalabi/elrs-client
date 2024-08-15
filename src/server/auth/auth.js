@@ -8,7 +8,7 @@ export function signOut() {
     axios.post('http://localhost:3000/auth/sign-out', {}, { withCredentials: true })
         .then((response) => {
             console.log(response.data);
-            document.location.reload();
+            document.location.href = 'http://localhost:5173/';
         })
         .catch(error => {
             console.log(error);

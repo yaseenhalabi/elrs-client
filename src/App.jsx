@@ -19,9 +19,8 @@ function App() {
         store.dispatch(setUser(response.data[0]));
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
-    
   }, []) // Add an empty dependency array to ensure the effect runs only once
   
   return (

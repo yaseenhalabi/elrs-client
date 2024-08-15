@@ -2,8 +2,18 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { downloadAudio, playAudio } from '../utils/audio'
+import { checkIfSignedIn } from '../utils/signin'
+import LoadingScreen from '../components/loading/LoadingScreen'
 export default function History() {
     const user = useSelector(state => state.user.user)
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        if (user !== undefined) {
+            checkIfSignedIn(user) 
+            setLoading(false)
+        }
+
+    }, [user])
     const [history, setHistory] = useState([])
 
     useEffect(() => {
@@ -15,7 +25,6 @@ export default function History() {
                 console.error(error)
             });
     }, [])
-
     const getAudio = (id) => {
         return axios.get('http://localhost:3000/text-to-speech/' + id, { 
             withCredentials: true,
@@ -43,10 +52,9 @@ export default function History() {
                 playAudio(audioFile)
             })
     }
-
-    
-
-
+    if (loading) {
+        return <LoadingScreen />
+    }
     return (
         <div className="page-container">
             {

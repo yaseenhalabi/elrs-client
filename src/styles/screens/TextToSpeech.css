@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    transform: translateY(50%);
 }
 
 .text-to-speech-form textarea {
@@ -24,12 +25,23 @@
     box-shadow: none;
     outline: none;
 }
-.text-to-speech-form button {
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-    background-color: rgb(21, 146, 75);
-    color: white;
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.button-black {
     font-size: 1rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 300px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+.button-black:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
 }

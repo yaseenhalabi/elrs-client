@@ -57,12 +57,12 @@
 }
 .price-comparison {
     background-color: white;
-    padding: 1rem;
+    padding: .3rem 1rem;
     justify-content: column;
 }
 
 .payment-option {
-    margin-bottom: 1rem;
+    margin: 2rem 0;
     font-size: .8rem;
 }
 

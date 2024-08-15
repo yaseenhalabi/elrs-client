@@ -54,7 +54,7 @@
     justify-content: center;
 }
 .dropdown-content {
-    transform: translateX(75%);
+    transform: translateX(50%);
     position: absolute;
     max-height: 0;
     overflow: hidden;
