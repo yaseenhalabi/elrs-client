@@ -33,7 +33,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="page-container">
+    <div className="credits-page-container">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

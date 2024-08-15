@@ -1,15 +1,12 @@
 import { useSelector } from "react-redux"
 import '../styles/screens/TextToSpeech.css'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { downloadAudio, playAudio } from '../utils/audio'
 export default function TextToSpeech() {
 
     const user = useSelector(state => state.user.user)
     const [audioFile, setAudioFile] = useState(null)
-    useEffect(() => {
-        console.log(user)
-    }, [user])
     const addCredits = () => {
             axios.post('http://localhost:3000/user/add-credits', {}, { withCredentials: true })
         .then(response => {
@@ -19,6 +16,7 @@ export default function TextToSpeech() {
             console.error(error)
         });
     }
+    
     const getAudio = () => {
         console.log("getting audio")
         setAudioFile(null)
@@ -39,7 +37,7 @@ export default function TextToSpeech() {
 
     const [text, setText] = useState('')
     return (
-        <div className="page-container">
+        <div className="tts-page-container">
             {
                 user &&
                 <div>

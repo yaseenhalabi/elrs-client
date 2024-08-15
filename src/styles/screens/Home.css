@@ -1,8 +1,87 @@
-.page-container {
-    display: flex;
+.home-page-container {
     flex-direction: column;
+    justify-self: flex-start;
+    align-items: flex-start;
+}
+.header-container {
+    padding: 3rem 5rem;
+    flex-direction: column;
+}
+.header-container h1 {
+    font-size: 3rem;
+    margin: 0 0 .5rem 0;
+    padding: 0;
+}
+.header-container h3 {
+    font-size: 1.2rem;
+    color: #757575;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+    padding: 0;
+}
+.header-container button {
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 300px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 1px solid transparent;
+}
+
+.header-container button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.price-comparison-section {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+    background-color: black;
+    padding: 3rem 0;
+    gap: 2rem;
+}
+
+.price-comparison-container {
+    flex-direction: column;
+    width: 300px;
+}
+.price-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: .2rem;
+    text-align: center;
+}
+.price-comparison {
+    background-color: white;
+    padding: 1rem;
+    justify-content: column;
+}
+
+.payment-option {
+    margin-bottom: 1rem;
+    font-size: .8rem;
+}
+
+.payment-option div {
+    margin-bottom: .3rem;
+}
+.amount strong {
+    font-weight: 700;
+}
+.amount span{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+
+.footnote {
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: #CBCBCB;
 }

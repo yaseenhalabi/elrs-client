@@ -17,8 +17,6 @@ function App() {
     axios.get('http://localhost:3000/user', { withCredentials: true })
       .then(response => {
         store.dispatch(setUser(response.data[0]));
-        localStorage.setItem('user', JSON.stringify(response.data[0]));
-        console.log("got user from server")
       })
       .catch(error => {
         console.log(error);
