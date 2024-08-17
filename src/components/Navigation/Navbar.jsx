@@ -15,7 +15,7 @@ export default function Navbar() {
                 <div className='nav-buttons'>
                     <a onClick={() => navigate('/text-to-speech')}>Generate Speech</a>
                     <a onClick={() => navigate('/history')}>History</a>
-                    <a onClick={() => navigate('/credits')}>Purchase Characters</a>
+                    <a onClick={() => navigate('/stripe-purchase')}>Purchase Characters</a>
                     <div className='dropdown' onMouseEnter={() => setUserDropdownIsOpen(true)} onMouseLeave={() => setUserDropdownIsOpen(false)}>
                         <button className='button-white'>{user.name}</button>
                         <div className={`dropdown-content ${userDropdownIsOpen ? "open" : ""}`}>

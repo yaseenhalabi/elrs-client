@@ -2,7 +2,7 @@ import './styles/App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './screens/Home.jsx'
 import TextToSpeech from './screens/TextToSpeech.jsx'
-import Credits from './screens/Credits.jsx'
+import StripePurchase from './screens/StripePurchase.jsx'
 import History from './screens/History.jsx'
 import Navbar from './components/Navigation/Navbar.jsx'
 import { Provider } from 'react-redux'
@@ -29,8 +29,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/text-to-speech" element={<TextToSpeech />} />
-          <Route path="credits" element={<Credits />} />
+          <Route path="text-to-speech" element={<TextToSpeech />} />
+          <Route path="stripe-purchase" element={<StripePurchase />} />
           <Route path="history" element={<History />} />
         </Routes>
       </Router>

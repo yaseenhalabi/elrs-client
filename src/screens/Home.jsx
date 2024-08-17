@@ -63,6 +63,7 @@ export default function Home() {
                     <div className='footnote'>These numbers are for comparison. You may purchase anywhere from 10k-10000k characters depending on your needs.</div>
                 </div>
             </div>
+            <div className='footer'></div>
         </div>
     )
 }

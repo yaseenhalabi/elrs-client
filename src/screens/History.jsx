@@ -72,46 +72,48 @@ export default function History() {
         return <LoadingScreen />
     }
     return (
-        <div className="history-page-container">
-            <div className="history-container">
-                <div className="sorting-container">
-                    <span>Sort By: </span>
-                    <button 
-                        onClick={() => setSortMethod("mostRecent")}
-                        className={sortMethod == "mostRecent" ? "button-black" : "button-white"}
-                    >
-                        Most Recent
-                    </button>
-                    <button 
-                        className={sortMethod == "leastRecent" ? "button-black" : "button-white"}
-                        onClick={() => setSortMethod("leastRecent")}
-                    >
-                            Least Recent
-                    </button>
-                </div>
-                <div className='history-item-list'>
-                    {
-                        history ? 
-                        sortedHistory.map(({_id, text, date_unix, history_item_id}) => {
-                            return (
-                                <div key={_id} className='history-item'>
-                                    <div className='history-item-date'>{convertDateUnix(date_unix)}</div>
-                                    <div className="history-item-contents">
-                                        <span>{text}</span>
-                                        <div className='history-item-buttons-container'>
-                                            <DownloadButton onClick={() => getAndDownloadAudio(history_item_id)} />
-                                            <PlayButton onClick={() => getAndPlayAudio(history_item_id)} />
+        <div>
+            <div className="history-page-container">
+                <div className="history-container">
+                    <div className="sorting-container">
+                        <span>Sort By: </span>
+                        <button 
+                            onClick={() => setSortMethod("mostRecent")}
+                            className={sortMethod == "mostRecent" ? "button-black" : "button-white"}
+                        >
+                            Most Recent
+                        </button>
+                        <button 
+                            className={sortMethod == "leastRecent" ? "button-black" : "button-white"}
+                            onClick={() => setSortMethod("leastRecent")}
+                        >
+                                Least Recent
+                        </button>
+                    </div>
+                    <div className='history-item-list'>
+                        {
+                            history ? 
+                            sortedHistory.map(({_id, text, date_unix, history_item_id}) => {
+                                return (
+                                    <div key={_id} className='history-item'>
+                                        <div className='history-item-date'>{convertDateUnix(date_unix)}</div>
+                                        <div className="history-item-contents">
+                                            <span>{text}</span>
+                                            <div className='history-item-buttons-container'>
+                                                <DownloadButton onClick={() => getAndDownloadAudio(history_item_id)} />
+                                                <PlayButton onClick={() => getAndPlayAudio(history_item_id)} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })
+                                )
+                            })
 
-                        :
-                        <div className='history-item'>
-                            <span>No history items</span>
-                        </div>
-                    }
+                            :
+                            <div className='history-item'>
+                                <span>No history items</span>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

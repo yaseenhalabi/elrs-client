@@ -4,8 +4,10 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { downloadAudio, playAudio } from '../utils/audio'
 import { checkIfSignedIn } from "../utils/signin"
-import LoadingScreen from '../components/loading/LoadingScreen'
+import LoadingScreen from '../components/Loading/LoadingScreen'
 import TinyLoading from '../components/loading/TinyLoading'
+import PlayButton from '../components/TextToSpeech/PlayButton'
+import DownloadButton from '../components/TextToSpeech/DownloadButton'
 export default function TextToSpeech() {
     const user = useSelector(state => state.user.user)
     const [loading, setLoading] = useState(true)
@@ -68,8 +70,8 @@ export default function TextToSpeech() {
                     />
                     <div className="buttons-container">
                         {generatingSpeech ? <TinyLoading /> : <button disabled={!text} className="button-black" onClick={() => getAudio()}>Generate{audioFile ? " new" : ""} Speech</button>}
-                        {audioFile && <div className="button-black" onClick={() => playAudio(audioFile)}>Play Speech</div>}
-                        {audioFile && <div className="button-black" onClick={() => downloadAudio(audioFile)}>Download Speech</div>}
+                        {audioFile && <PlayButton onClick={() => playAudio(audioFile)} />}
+                        {audioFile && <DownloadButton onClick={() => downloadAudio(audioFile)} />}
                     </div>
                 </div>
             </div>

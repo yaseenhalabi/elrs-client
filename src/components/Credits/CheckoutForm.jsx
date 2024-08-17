@@ -84,9 +84,9 @@ export default function CheckoutForm() {
     <form id="payment-form" onSubmit={handleSubmit}>
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="back-button pay-now-button">
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? <div className="spinner" id="spinner"></div> : "Submit Payment"}
         </span>
       </button>
       {/* Show any error or success messages */}
