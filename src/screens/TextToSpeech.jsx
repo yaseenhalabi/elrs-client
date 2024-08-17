@@ -56,18 +56,21 @@ export default function TextToSpeech() {
 
     return (
         <div className="tts-page-container">
-            <div className='text-to-speech-form'>
-                <textarea
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    rows='5'
-                    cols='50'
-                    placeholder='Type anything and turn it into natural-sounding speech' 
-                />
-                <div className="buttons-container">
-                    {generatingSpeech ? <TinyLoading /> : <button className="button-black" onClick={() => getAudio()}>Generate Speech</button>}
-                    {audioFile && <div onClick={() => playAudio(audioFile)}>Play Speech</div>}
-                    {audioFile && <div onClick={() => downloadAudio(audioFile)}>Download Speech</div>}
+            <div className="tts-form-container">
+                <div className="credits-remaining-text" >You have {user.credits} credits remaining</div>
+                <div className='tts-form'>
+                    <textarea
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        rows='5'
+                        cols='50'
+                        placeholder='Type anything and turn it into natural-sounding speech' 
+                    />
+                    <div className="buttons-container">
+                        {generatingSpeech ? <TinyLoading /> : <button disabled={!text} className="button-black" onClick={() => getAudio()}>Generate{audioFile ? " new" : ""} Speech</button>}
+                        {audioFile && <div className="button-black" onClick={() => playAudio(audioFile)}>Play Speech</div>}
+                        {audioFile && <div className="button-black" onClick={() => downloadAudio(audioFile)}>Download Speech</div>}
+                    </div>
                 </div>
             </div>
         </div>

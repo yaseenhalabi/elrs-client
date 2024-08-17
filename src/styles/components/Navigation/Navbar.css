@@ -27,6 +27,7 @@
     border-radius: 300px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
+    border: 1px solid transparent;
 }
 .button-black:hover {
     background-color: rgb(255, 255, 255);

@@ -5,19 +5,29 @@
     justify-content: center;
     align-items: center;
 }
-.text-to-speech-form {
-    padding: 20px;
+
+.tts-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(50%);
+}
+.credits-remaining-text {
+    font-size: .8rem;;
+    text-align: left;
+}
+.tts-form {
     border: 1px solid #c9c9c9;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    transform: translateY(50%);
+    padding: 1rem;
 }
 
-.text-to-speech-form textarea {
-    padding: 10px;
+.tts-form textarea {
+    width: 100%;
+    height: 200px;
     font-size: 1rem;
     resize: none;
     border: none;
@@ -28,19 +38,22 @@
 
 .buttons-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    padding-top: .7rem;
+    width: 100%;
 }
-.button-black {
+.buttons-container button {
+
     font-size: 1rem;
     border: none;
-    padding: 0.5rem 1.5rem;
     border-radius: 300px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
+    border: 1px solid transparent;
 }
-.button-black:hover {
+.buttons-container button:hover {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border: 1px solid rgb(0, 0, 0);

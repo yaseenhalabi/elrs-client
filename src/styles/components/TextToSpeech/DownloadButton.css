@@ -1,0 +1,21 @@
+.download-button {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    border-radius: 360px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0;
+}
+
+.download-button img {
+    width: 20px;
+}
+
+.clicked {
+    background-color: white;
+}
