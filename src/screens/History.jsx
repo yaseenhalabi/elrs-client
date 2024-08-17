@@ -7,7 +7,9 @@ import { checkIfSignedIn } from '../utils/signin'
 import LoadingScreen from '../components/loading/LoadingScreen'
 import PlayButton from '../components/TextToSpeech/PlayButton'
 import DownloadButton from '../components/TextToSpeech/DownloadButton'
+
 export default function History() {
+    console.log(process.env.REACT_APP_SERVER_URI)
     const user = useSelector(state => state.user.user)
     const [loading, setLoading] = useState(true)
     const [sortMethod, setSortMethod] = useState('mostRecent')
