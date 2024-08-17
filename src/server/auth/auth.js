@@ -1,14 +1,17 @@
 import axios from 'axios'
 
 export function signInWithGoogle() {
-    document.location.href = 'http://localhost:3000/auth/google'
+    const SERVER_URI = import.meta.env.VITE_SERVER_URI 
+    document.location.href = SERVER_URI + '/auth/google'
 }
 
 export function signOut() {
-    axios.post('http://localhost:3000/auth/sign-out', {}, { withCredentials: true })
+    const SERVER_URI = import.meta.env.VITE_SERVER_URI 
+    const CLIENT_URI = import.meta.env.VITE_CLIENT_URI 
+    axios.post(SERVER_URI + '/auth/sign-out', {}, { withCredentials: true })
         .then((response) => {
             console.log(response.data);
-            document.location.href = 'http://localhost:5173/';
+            document.location.href = CLIENT_URI
         })
         .catch(error => {
             console.log(error);

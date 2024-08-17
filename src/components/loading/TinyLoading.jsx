@@ -1,7 +1,19 @@
-export default function tinyLoading() {
+import BeatLoader from 'react-spinners/BeatLoader';
+export default function TinyLoading ({ color }) {
+    const override = {
+        display: "block",
+        margin: "0 auto",
+    };
     return (
-        <div className="loading">
-            <div className="loading__spinner">tiny loading</div>
+        <div style={{}}>
+            <BeatLoader
+                color={color}
+                loading={true}
+                cssOverride={override}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
         </div>
     )
 }

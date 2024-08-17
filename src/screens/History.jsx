@@ -7,9 +7,8 @@ import { checkIfSignedIn } from '../utils/signin'
 import LoadingScreen from '../components/loading/LoadingScreen'
 import PlayButton from '../components/TextToSpeech/PlayButton'
 import DownloadButton from '../components/TextToSpeech/DownloadButton'
-
 export default function History() {
-    console.log(process.env.REACT_APP_SERVER_URI)
+    const SERVER_URI = import.meta.env.VITE_SERVER_URI
     const user = useSelector(state => state.user.user)
     const [loading, setLoading] = useState(true)
     const [sortMethod, setSortMethod] = useState('mostRecent')
@@ -30,7 +29,7 @@ export default function History() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3000/user/history', { withCredentials: true })
+        axios.get(SERVER_URI + '/user/history', { withCredentials: true })
             .then(response => {
                 setHistory(response.data.history)
             })
@@ -39,7 +38,7 @@ export default function History() {
             });
     }, [])
     const getAudio = (id) => {
-        return axios.get('http://localhost:3000/text-to-speech/' + id, { 
+        return axios.get(SERVER_URI + '/text-to-speech/' + id, { 
             withCredentials: true,
             responseType: 'blob',  // Expect a blob response (binary data)
         })
@@ -111,8 +110,8 @@ export default function History() {
                             })
 
                             :
-                            <div className='history-item'>
-                                <span>No history items</span>
+                            <div style={{textAlign: 'center'}}>
+                                <span>You have not generated anything yet</span>
                             </div>
                         }
                     </div>

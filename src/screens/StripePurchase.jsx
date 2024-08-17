@@ -6,12 +6,13 @@ import axios from "axios";
 import CheckoutForm from "../components/Credits/CheckoutForm";
 import { checkIfSignedIn } from "../utils/signin";
 import { useSelector } from "react-redux";
-import LoadingScreen from "../components/Loading/LoadingScreen";
+import LoadingScreen from "../components/loading/LoadingScreen";
 
 // Load Stripe outside the component render
 const stripePromise = loadStripe("pk_test_51H0aqaBhICa9al4eaK99VDD79MRIi4xWVUMTu5VEcW33w26Nv65sUq3pJ9dliFi7bq7OIwfeMmAFUJCQM7BV73iK00IcHwU0ti");
 
 export default function StripePurchase() {
+  const SERVER_URI = import.meta.env.VITE_SERVER_URI
   const [loading, setLoading] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
   const [amount, setAmount] = useState(50); // Default amount
@@ -30,7 +31,7 @@ export default function StripePurchase() {
       checkIfSignedIn(user);
       setLoading(false);
 
-      axios.post("http://localhost:3000/payment/intent", { amount }, { withCredentials: true })
+      axios.post(SERVER_URI + "/payment/intent", { amount }, { withCredentials: true })
         .then((res) => res.data)
         .then((data) => {
           setClientSecret(data.clientSecret);

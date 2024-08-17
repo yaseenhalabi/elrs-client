@@ -58,7 +58,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:5173",
+        return_url: import.meta.env.VITE_CLIENT_URI + "/payment-complete",  
       },
     });
 

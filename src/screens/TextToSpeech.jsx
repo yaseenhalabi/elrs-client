@@ -8,6 +8,7 @@ import LoadingScreen from '../components/Loading/LoadingScreen'
 import TinyLoading from '../components/loading/TinyLoading'
 import PlayButton from '../components/TextToSpeech/PlayButton'
 import DownloadButton from '../components/TextToSpeech/DownloadButton'
+
 export default function TextToSpeech() {
     const user = useSelector(state => state.user.user)
     const [loading, setLoading] = useState(true)
@@ -23,21 +24,22 @@ export default function TextToSpeech() {
 
     }, [user])
 
+    const SERVER_URI = import.meta.env.VITE_SERVER_URI; // Get server URI from environment
 
     const addCredits = () => {
-            axios.post('http://localhost:3000/user/add-credits', {}, { withCredentials: true })
-        .then(response => {
-            console.log(response.data)
-        })
-        .catch(error => {
-            console.error(error)
-        });
+        axios.post(`${SERVER_URI}/user/add-credits`, {}, { withCredentials: true })
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.error(error)
+            });
     }
 
     const getAudio = () => {
         setAudioFile(null)
         setGeneratingSpeech(true)
-        axios.post('http://localhost:3000/text-to-speech', { text }, {  
+        axios.post(`${SERVER_URI}/text-to-speech`, { text }, {  
             withCredentials: true,
             responseType: 'blob',  // Expect a blob response (binary data)
         })
