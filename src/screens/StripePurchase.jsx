@@ -1,21 +1,23 @@
-import "../styles/screens/Credits.css";
+import "../styles/screens/StripePurchase.css";
 import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import CheckoutForm from "../components/Credits/CheckoutForm";
+import LoadingScreen from '../components/Loading/LoadingScreen';
+import CheckoutForm from "../components/StripePurchase/CheckoutForm";
 import { checkIfSignedIn } from "../utils/signin";
 import { useSelector } from "react-redux";
-import LoadingScreen from "../components/loading/LoadingScreen";
 
 // Load Stripe outside the component render
-const stripePromise = loadStripe("pk_test_51H0aqaBhICa9al4eaK99VDD79MRIi4xWVUMTu5VEcW33w26Nv65sUq3pJ9dliFi7bq7OIwfeMmAFUJCQM7BV73iK00IcHwU0ti");
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 export default function StripePurchase() {
   const SERVER_URI = import.meta.env.VITE_SERVER_URI
   const [loading, setLoading] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
-  const [amount, setAmount] = useState(50); // Default amount
+  const [amountOfCharacters, setAmountOfCharacters] = useState(10000); // Default amount
+  const amountPayment = amountOfCharacters * 0.00009;
+  const amountPaymentInCents = amountPayment * 100;
   const [showPaymentForm, setShowPaymentForm] = useState(true); // New state for tracking the form
   const user = useSelector((state) => state.user.user);
 
@@ -30,8 +32,8 @@ export default function StripePurchase() {
     if (user !== undefined) {
       checkIfSignedIn(user);
       setLoading(false);
-
-      axios.post(SERVER_URI + "/payment/intent", { amount }, { withCredentials: true })
+    if (amountPayment < 5) {
+      axios.post(SERVER_URI + "/payment/intent", { amount: amountPaymentInCents }, { withCredentials: true })
         .then((res) => res.data)
         .then((data) => {
           setClientSecret(data.clientSecret);
@@ -41,6 +43,10 @@ export default function StripePurchase() {
           console.log(error);
         });
     }
+    else {
+      alert("Minimum payment is $5");
+    }
+  }
   };
 
   const handleBackClick = () => {
@@ -64,13 +70,15 @@ export default function StripePurchase() {
       {
         showPaymentForm ? 
         <div className="payment-form">
-          <label htmlFor="amount-input">Enter Payment Amount:</label>
+          <label htmlFor="amount-input">Amount of characters:</label>
           <input 
             type="number" 
             id="amount-input" 
-            value={amount} 
-            onChange={(e) => setAmount(e.target.value)} 
+            value={amountOfCharacters} 
+            onChange={(e) => setAmountOfCharacters(e.target.value)} 
           />
+          <div>About {Math.round(amountOfCharacters/1000)} minutes of audio</div>
+          <div>Cost: ${amountPayment.toFixed(2)}</div> {/* Round to nearest cent */}
           <button onClick={createPaymentIntent}>Proceed to Payment</button>
         </div>
         :

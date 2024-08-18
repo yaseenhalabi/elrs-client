@@ -10,7 +10,6 @@
 .payment-form, .stripe-form-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
