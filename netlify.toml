@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "*"
+  to = "VITE_CLIENT_URL"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
