@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function signInWithGoogle() {
     const SERVER_URI = import.meta.env.VITE_SERVER_URI 
-    // redirect user to server uri
+    console.log(SERVER_URI)
     window.location.href = SERVER_URI + '/auth/google'
 }
 
