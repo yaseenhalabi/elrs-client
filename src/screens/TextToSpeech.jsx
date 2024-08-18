@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { downloadAudio, playAudio } from '../utils/audio'
 import { checkIfSignedIn } from "../utils/signin"
-import LoadingScreen from '../components/Loading/LoadingScreen'
+import LoadingScreen from '../components/loading/LoadingScreen'
 import TinyLoading from '../components/loading/TinyLoading'
 import PlayButton from '../components/TextToSpeech/PlayButton'
 import DownloadButton from '../components/TextToSpeech/DownloadButton'

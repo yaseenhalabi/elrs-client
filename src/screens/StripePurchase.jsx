@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import LoadingScreen from '../components/Loading/LoadingScreen';
+import LoadingScreen from '../components/loading/LoadingScreen';
 import CheckoutForm from "../components/StripePurchase/CheckoutForm";
 import { checkIfSignedIn } from "../utils/signin";
 import { useSelector } from "react-redux";
