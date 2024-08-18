@@ -26,15 +26,6 @@ export default function TextToSpeech() {
 
     const SERVER_URI = import.meta.env.VITE_SERVER_URI; // Get server URI from environment
 
-    const addCredits = () => {
-        axios.post(`${SERVER_URI}/user/add-credits`, {}, { withCredentials: true })
-            .then(response => {
-                console.log(response.data)
-            })
-            .catch(error => {
-                console.error(error)
-            });
-    }
 
     const getAudio = () => {
         setAudioFile(null)
