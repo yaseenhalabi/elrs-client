@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export function signInWithGoogle() {
+export function signInWithGoogle(event) {
+    event.preventDefault(); // Prevent default link behavior
     const SERVER_URI = import.meta.env.VITE_SERVER_URI 
-    console.log(SERVER_URI)
     window.location.href = SERVER_URI + '/auth/google'
 }
 
